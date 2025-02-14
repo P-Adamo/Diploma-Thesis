@@ -72,7 +72,7 @@ legend(tl1,'Low Side - Storage_l_o_w','High Side','DC Link','Storage_h_i_g_h',''
 title(tl1,'Current Flow',fontsize=17);
 subtitle(tl1,'Constant DC Link Current: -6A',fontsize=13);
 
-tl2=nexttile;χ
+tl2=nexttile;
 plot(tl2,time,v_low,LineWidth=3);
 title(tl2,'Low Side Voltage',fontsize=16);
 subtitle(tl2,'Constant DC Link Current: -6A',fontsize=13);
