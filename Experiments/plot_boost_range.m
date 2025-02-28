@@ -18,13 +18,12 @@ Ieff_4A_boost=(V_high_4A_boost*I_high_bat_4A_boost)./(V_low_4A_boost.*I_low_bat_
 
 %%
 boost_v_a_and_curr_ratio=figure();
-set(boost_v_a_and_curr_ratio,'position',[100,100,700,1000]);
+set(boost_v_a_and_curr_ratio,'position',[100,100,700,1100]);
 boost_v_a_and_curr_ratio_tiles=tiledlayout(4,1);
 boost_v_a_and_curr_ratio_tiles.TileSpacing = 'compact';
 boost_v_a_and_curr_ratio_tiles.Padding = 'compact';
-xlabel(boost_v_a_and_curr_ratio_tiles,"Low Side Voltage (V)",fontsize=15);
-title(boost_v_a_and_curr_ratio_tiles,"Experiment Measurements: Boost Mode",fontsize=16);
-subtitle(boost_v_a_and_curr_ratio_tiles,'High Side: 80V / Negative Load - Low Side: Increasing Voltage',fontsize=15);
+xlabel(boost_v_a_and_curr_ratio_tiles,"Τάση Χαμηλής Πλευράς (V)",fontsize=15,FontName='Verdana');
+title(boost_v_a_and_curr_ratio_tiles,"Πειραματικές Μετρήσεις: Λειτουργία Ανύψωσης",fontsize=16,FontName='Verdana');
 
 tl1=nexttile([2 1]);
 hold on;
@@ -36,12 +35,12 @@ p1=plot(tl1,V_low_2A_boost,I_low_bat_2A_boost,LineWidth=3,color="#0072BD");
 p2=plot(tl1,V_low_4A_boost,I_low_bat_4A_boost,LineWidth=3,color="#D95319");
 
 lgnd1=legend(tl1,[p1,p2],'2A','4A',fontsize=13,location='southeast');
-title(lgnd1,{'High Side', 'Reference'},fontsize=12);
+title(lgnd1,{'Αναφορά', 'Υψηλής','Πλευράς'},fontsize=12,FontName='Verdana');
 axis(tl1,[19 41 0 19]);
 yticks(0:1:30);
 xticks(0:2.5:40);
-title(tl1,'Low Side Current',fontsize=14);
-ylabel(tl1,'Current (A)',fontsize=14);
+title(tl1,'Ρεύμα Χαμηλής Πλευράς',fontsize=15,FontName='Verdana');
+ylabel(tl1,'Ρεύμα (A)',fontsize=14,FontName='Verdana');
 set(tl1, 'XDir','reverse');
 
 %%
@@ -55,7 +54,7 @@ sr2=scatter(tl2,V_low_4A_boost,I_high_bat_4A_boost,LineWidth=2,MarkerEdgeColor="
 pr1=plot(tl2,V_low_2A_boost,I_high_bat_2A_boost,LineWidth=3,color="#0072BD");
 pr2=plot(tl2,V_low_4A_boost,I_high_bat_4A_boost,LineWidth=3,color="#D95319");
 
-title(tl2,'High Side Current',fontsize=14);
+title(tl2,'Ρεύμα Υψηλής Πλευράς',fontsize=15,FontName='Verdana');
 axis(tl2,[19 41 0 4.5]);
 yticks(0:0.5:5);
 xticks(0:2.5:40);
@@ -71,7 +70,7 @@ se2=scatter(tl3,V_low_4A_boost,100*Ieff_4A_boost,LineWidth=2,MarkerEdgeColor="#D
 pe1=plot(tl3,V_low_2A_boost,100*Ieff_2A_boost,LineWidth=3,color="#0072BD");
 pe2=plot(tl3,V_low_4A_boost,100*Ieff_4A_boost,LineWidth=3,color="#D95319");
 
-title(tl3,'Converter Efficiency',fontsize=14);
+title(tl3,'Απόδοση Μετατροπέα',fontsize=15,FontName='Verdana');
 ytickformat(tl3,"percentage");
 axis(tl3,[19 41 82.5 100]);
 yticks(0:2.5:100);
