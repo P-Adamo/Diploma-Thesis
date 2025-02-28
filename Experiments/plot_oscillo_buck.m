@@ -2,7 +2,7 @@
 clearvars;clc;
 
 %%
-NewFile3=readtable('C:\Users\adamo\Desktop\Workspace\Experiments\data\Buck\NewFile3.csv');
+NewFile3=readtable('C:\Users\adamo\Desktop\Workspace\Experiments\data_experiments\Buck\NewFile3.csv');
 
 %%
 time=NewFile3.X * NewFile3.Increment(1);
@@ -25,7 +25,7 @@ axis([0.1e-4 2.1e-4 13.7 19]);
 
 tl2=nexttile;
 ch2 = min(max(ch2,15.5),16.3);
-plot(time, ch2,LineWidth=2);
+%plot(time, ch2,LineWidth=2);
 hold on
 ch2_filt=lowpass(ch2,fpass,fs);
 plot(time, ch2_filt,LineWidth=4);
