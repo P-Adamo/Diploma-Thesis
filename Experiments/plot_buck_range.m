@@ -40,13 +40,12 @@ Ieff_9A5_buck=(V_low_9A5_buck.*I_low_bat_9A5_buck)./(V_high_9A5_buck*I_high_conv
 
 %%
 buck_v_a_and_curr_ratio=figure();
-set(buck_v_a_and_curr_ratio,'position',[100,100,700,1000]);
+set(buck_v_a_and_curr_ratio,'position',[100,100,700,1100]);
 buck_v_a_and_curr_ratio_tiles=tiledlayout(4,1);
 buck_v_a_and_curr_ratio_tiles.TileSpacing = 'compact';
 buck_v_a_and_curr_ratio_tiles.Padding = 'compact';
-xlabel(buck_v_a_and_curr_ratio_tiles,"Low Side Voltage (V)",fontsize=15);
-title(buck_v_a_and_curr_ratio_tiles,"Experiment Measurements: Buck Mode",fontsize=16);
-subtitle(buck_v_a_and_curr_ratio_tiles,'High Side: 80V / Constant Load - Low Side: Increasing Voltage',fontsize=15);
+xlabel(buck_v_a_and_curr_ratio_tiles,"Τάση Χαμηλής Πλευράς (V)",fontsize=15,FontName='Verdana');
+title(buck_v_a_and_curr_ratio_tiles,"Πειραματικές Μετρήσεις: Λειτουργία Υποβάθμισης",fontsize=16,FontName='Verdana');
 
 tl1=nexttile([2 1]);
 hold on;
@@ -61,13 +60,13 @@ p2=plot(tl1,V_low_5A5_buck,I_low_bat_5A5_buck,LineWidth=3,color="#D95319");
 p3=plot(tl1,V_low_7A5_buck,I_low_bat_7A5_buck,LineWidth=3,color="#EDB120");
 p4=plot(tl1,V_low_9A5_buck,I_low_bat_9A5_buck,LineWidth=3,color="#7E2F8E");
 
-lgnd1=legend(tl1,[p1,p2,p3,p4],'3.5A','5.5A','7.5A','9.5A',fontsize=13,location='northeast');
-title(lgnd1,{'High Side', 'Load'},fontsize=12);
+lgnd1=legend(tl1,[p1,p2,p3,p4],'3.5A','5.5A','7.5A','9.5A',fontsize=13,location='northeast',FontName='Verdana');
+title(lgnd1,'Φορτίο DC Ζυγού',fontsize=11,FontName='Verdana');
 axis([14 41 0 31]);
 yticks(0:2:30);
 xticks(0:2.5:40);
-title(tl1,'Low Side Current',fontsize=14);
-ylabel(tl1,'Current (A)',fontsize=14);
+title(tl1,'Ρεύμα Χαμηλής Πλευράς',fontsize=15,FontName='Verdana');
+ylabel(tl1,'Ρεύμα (A)',fontsize=14,FontName='Verdana');
 
 %%
 tl2=nexttile;
@@ -84,7 +83,7 @@ pr2=plot(tl2,V_low_5A5_buck,100*Iratio_5A5_buck,LineWidth=3,color="#D95319");
 pr3=plot(tl2,V_low_7A5_buck,100*Iratio_7A5_buck,LineWidth=3,color="#EDB120");
 pr4=plot(tl2,V_low_9A5_buck,100*Iratio_9A5_buck,LineWidth=3,color="#7E2F8E",LineStyle="-");
 
-title(tl2,'Current Sharing Ratio',fontsize=14);
+title(tl2,'Αναλογία καταμερισμού ρεύματος',fontsize=15,FontName='Verdana');
 ytickformat(tl2,"percentage");
 axis(tl2,[14 41 70 100]);
 yticks(0:5:100);
@@ -104,7 +103,7 @@ pe2=plot(tl3,V_low_5A5_buck,100*Ieff_5A5_buck,LineWidth=3,color="#D95319");
 pe3=plot(tl3,V_low_7A5_buck,100*Ieff_7A5_buck,LineWidth=3,color="#EDB120");
 pe4=plot(tl3,V_low_9A5_buck,100*Ieff_9A5_buck,LineWidth=3,color="#7E2F8E",LineStyle="-");
 
-title(tl3,'Converter Efficiency',fontsize=14);
+title(tl3,'Απόδοση Μετατροπέα',fontsize=15,FontName='Verdana');
 ytickformat(tl3,"percentage");
 axis(tl3,[14 41 77.5 100]);
 yticks(0:5:100);
