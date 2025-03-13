@@ -1,0 +1,50 @@
+%% Clear stuff
+clear variables;clc;
+
+%% Create fig
+buck_fig=figure();
+set(buck_fig,'position',[100,100,700,700]);
+buck_tiles=tiledlayout(2,1);
+buck_tiles.TileSpacing = 'compact';
+buck_tiles.Padding = 'compact';
+xlabel(buck_tiles,'Duty Cycle (%)',fontsize=17);
+ylabel(buck_tiles,"Normalised RMS Current");
+title(buck_tiles,"Buck Converter Normalised Current",fontsize=17);
+
+%% Buck Input Current Ripple 
+tl1=nexttile;
+D=0:0.001:1;
+n=1;
+m=floor(D*n);
+plot(tl1, D*100, sqrt( (D-m/n).*(((1+m)/n)-D) ) ,LineWidth=3);
+hold on;
+grid on;
+
+for n=2:1:4
+    m=floor(D*n);
+    plot(tl1, D*100, sqrt( (D-m/n).*(((1+m)/n)-D) ) ,LineWidth=3);
+end
+
+lgnd1=legend(tl1,'1','2','3','4');
+title(lgnd1,"N");
+xtickformat(tl1,"percentage");
+title(tl1,'Normalised Input RMS Current',fontsize=13);
+
+%% Buck Output Current Ripple 
+tl2=nexttile;
+D=0:0.001:1;
+n=1;
+m=floor(D*n);
+plot(tl2, D*100, (n/D.*(1-D)) * (D-m/n) * ( (1+m)/n -D) ,LineWidth=3);
+hold on;
+grid on;
+
+for n=2:1:4
+    m=floor(D*n);
+    plot(tl2, D*100, sqrt( (D-m/n).*(((1+m)/n)-D) ) ,LineWidth=3);
+end
+
+lgnd1=legend(tl2,'1','2','3','4');
+title(lgnd1,"N");
+xtickformat(tl2,"percentage");
+title(tl2,'Normalised Input RMS Current',fontsize=13);
