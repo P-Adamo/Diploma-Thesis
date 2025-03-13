@@ -74,7 +74,8 @@ save('sim_save_3br_eff',"data");
 
 %% Scatter Plots
 figure();
-set(gcf,'position',[100,100,700,700]);
+ax=axes;
+set(gcf,'position',[100,100,700,600]);
 i=5;
 s=scatter3(data(i).volt,data(i).curr,data(i).eff*100,'Marker','o','MarkerEdgeColor','none','MarkerFaceColor','flat');
 s.SizeData=120;
@@ -91,9 +92,9 @@ for i=(size(ratio_range,2)-2):1:size(ratio_range,2)-1
     s.SizeData=120;
 end
 
-xlabel('Supercapacitor Voltage (V)');
-ylabel('Supercapacitor Current (A)');
-zlabel('Converter Efficiency (%)');
+xlabel('Τάση Υπερπυκνωτών (V)',fontsize=14,FontName='Verdana');
+ylabel('Ρεύμα Υπερπυκνωτών (A)',fontsize=14,FontName='Verdana');
+zlabel('Απόδοση Μετατροπέα (%)',fontsize=14,FontName='Verdana');
 ztickformat("percentage");
 grid on;
 lgnd_txt=[];
@@ -101,13 +102,23 @@ for i=5:1:size(ratio_range,2)-1
     lgnd_txt=[lgnd_txt; join([num2str(ratio_range(i)*100,'%.1f'),'%'])];
 end
 
-leg=legend(lgnd_txt);
-leg.Title.String='Ratio';
+leg=legend(lgnd_txt,FontSize=11,FontName='Verdana');
+title(leg,{'Αναλογία','Κλάδου 1'},FontSize=11,FontName='Verdana');
 xticks(10:5:40);
 yticks(30:5:60);
 zticks(79:1:99);
 axis([7.5 42.5 27.5 62.5 88.4 98.2]);
-title("Asymmetrical 3 Branch BDC, Current Sharing Ratio Efficiency","DC Link Voltage: 80V, Synchronous Branch Current Ratio",FontSize=14);
+title({"Ασυμμετρικός Δικατευθυντήριος Μετατροπέας 3 Κλάδων", "Απόδοση Καταμερισμού Ρεύματος"},FontSize=14,FontName='Verdana');
+
+%%
+
+[az, el] = view;
+ax.XLabel.Rotation = 16.5;  
+ax.YLabel.Rotation = -12;       
+%%
+ax.XLabel.Position = ax.XLabel.Position + [0, 0, +0.1]; 
+%%
+ax.YLabel.Position = ax.YLabel.Position + [0, 0, 0.1];
 
 %% Save svg corner
 saveas(gcf,'3br_ratio_comp_corner.svg');
